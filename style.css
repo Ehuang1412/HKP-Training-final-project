@@ -80,5 +80,12 @@ button:hover{
 }
 
 .use{
-  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+} 
+
+.cen{
+  display: flex;
+  justify-content: center;
 }
