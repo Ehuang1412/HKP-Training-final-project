@@ -4,6 +4,7 @@ if(document.readyState == 'loading'){
   ready();
 }
 
+// Event listeners for elements already loaded into document
 function ready(){
   let removeCartItemButtons = document.getElementsByClassName("btn-danger");
   console.log(removeCartItemButtons)
@@ -25,6 +26,18 @@ function ready(){
     button.addEventListener('click', addToCartClicked);
   }
 
+  document.getElementById('checkOutbtn').addEventListener('click',purchaseClicked);
+
+}
+
+// Events
+function purchaseClicked(){
+  alert('Thank you for your purchase!')
+  let cartItems = document.getElementsByClassName('cart-items')[0];
+  while(cartItems.hasChildNodes()){
+    cartItems.removeChild(cartItems.firstChild);
+  }
+  updateCartTotal();
 }
 
 function removeCartItem(event){
@@ -65,7 +78,7 @@ function addItemToCart(title,price,imageSrc){
       return
     }
   }
-  
+
   let cartRowContents = `
     <div class="cart-item cart-column">
       <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
@@ -79,6 +92,9 @@ function addItemToCart(title,price,imageSrc){
   `
   cartRow.innerHTML = cartRowContents;
   cartItems.append(cartRow);
+  // Hook up all event listeners to the new elements added to the document since it was add after ready()
+  cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click',removeCartItem);
+  cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change',quantityChanged);
 }
 
 
