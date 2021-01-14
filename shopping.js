@@ -1,18 +1,42 @@
-let removeCartItemButtons = document.getElementsByClassName("btn-danger");
+if(document.readyState == 'loading'){
+  document.addEventListener('DOMContentLoaded', ready);
+}else{
+  ready();
+}
 
-console.log(removeCartItemButtons)
+function ready(){
+  let removeCartItemButtons = document.getElementsByClassName("btn-danger");
+  console.log(removeCartItemButtons)
+  for(let i=0; i<removeCartItemButtons.length; i++){
+    let button = removeCartItemButtons[i];
+    console.log("button"+i+" :"+button);
+    button.addEventListener('click', removeCartItem)
+  }
 
-for(let i=0; i<removeCartItemButtons.length; i++){
-  let button = removeCartItemButtons[i];
-  console.log("button"+i+" :"+button);
-  button.addEventListener('click', function(event){
-    console.log('removed')
-    let buttonClicked = event.target;
-    buttonClicked.parentElement.parentElement.remove();
-    updateCartTotal();
-  })
+  let quantityInputs = document.getElementsByClassName('cart-quantity-input');
+  for(let i=0; i<quantityInputs.length; i++){
+    let input = quantityInputs[i];
+    input.addEventListener('change', quantityChanged);
+  }
 
 }
+
+function removeCartItem(event){
+  console.log('removed')
+  let buttonClicked = event.target;
+  buttonClicked.parentElement.parentElement.remove();
+  updateCartTotal();
+}
+
+function quantityChanged(event){
+  let input = event.target;
+  if( isNaN(input.value) || input.value<=0) {
+    input.value = 1;
+  }
+  updateCartTotal();
+}
+
+
 
 function updateCartTotal(){
   console.log("--updateCartTotal--")
