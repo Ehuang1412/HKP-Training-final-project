@@ -19,6 +19,12 @@ function ready(){
     input.addEventListener('change', quantityChanged);
   }
 
+  let addToCartButtons = document.getElementsByClassName('shop-item-button');
+  for(let i=0; i<addToCartButtons.length; i++){
+    let button = addToCartButtons[i];
+    button.addEventListener('click', addToCartClicked);
+  }
+
 }
 
 function removeCartItem(event){
@@ -36,6 +42,34 @@ function quantityChanged(event){
   updateCartTotal();
 }
 
+function addToCartClicked(event){
+  let button = event.target;
+  let shopItem = button.parentElement.parentElement;
+  let title = shopItem.getElementsByClassName('shop-item-title')[0].innerText;
+  let price = shopItem.getElementsByClassName('shop-item-price');
+  let imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src;
+  console.log(title,price,imageSrc);
+  addItemToCart(title,price,imageSrc);
+}
+
+function addItemToCart(title,price,imageSrc){
+  let cartRow = document.createElement('div');
+  cartRow.classList.add('cart-row');
+  let cartItems = document.getElementsByClassName('cart-items')[0];
+  let cartRowContents = `
+    <div class="cart-item cart-column">
+      <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
+      <span class="cart-item-title">${title}</span>
+    </div>
+    <span class="cart-price cart-column">${price}</span>
+    <div class="cart-quantity cart-column">
+        <input class="cart-quantity-input" type="number" value="1">
+        <button class="btn btn-danger" type="button">REMOVE</button>
+    </div>
+  `
+  cartRow.innerHTML = cartRowContents;
+  cartItems.append(cartRow);
+}
 
 
 function updateCartTotal(){
@@ -58,6 +92,7 @@ function updateCartTotal(){
     total = total + (price*quantity);
     console.log('total: '+total);
   }
+  total = Math.round(total*100)/100;
   document.getElementsByClassName('cart-total-price')[0].innerText = '$'+total
 }
 // const url = 'https://install-gentoo.herokuapp.com/users/signup';
