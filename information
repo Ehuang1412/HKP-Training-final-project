@@ -1,0 +1,15 @@
+Functionality:Administrators: 
+●Are able to log-in with a predefined username and password (a user should be able to be recognized as an administrator)
+●Upload/remove items to/from the store. Each item consists of a price, a description, and a picture.Users:
+●Log-in to a pre-created account 
+●Create/sign-up for an account
+●View all items in the store
+●Click on items and add them to the cart
+●View all items in the cart
+●Checkout cart (no payment processing; checking out should simply empty the cart, update item quantities, and redirect the user to the shopping page)
+
+Optional (add these functionalities if you have time): Item Categories
+●Each item has an additional field (a category)
+●Users can filter items by their category Multiple Picture Upload
+●Administrators can upload multiple pictures
+●Pictures gradually slide in a carousel on the app as the user views the item

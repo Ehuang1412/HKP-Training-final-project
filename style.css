@@ -1,0 +1,80 @@
+body{
+  text-align: center;
+  background-color:#fafafa;
+}
+label{
+  padding: 10px;
+}
+div{
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+ul{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px 15px;
+}
+
+nav{
+  background-color: #3800b3;
+  text-transform: uppercase;
+  font-family: "Arial";
+  font-weight: 600;
+  
+}
+
+button{
+  background-color: #6200ee;
+  color: white;
+  text-transform: uppercase;
+  padding: 9px 16px;
+  width: 50%;
+  font-weight: 600;
+  margin: 2%;
+  border-radius: 7px;
+}
+button:hover{
+  background-color: #a771f3;
+  color: white;
+}
+
+#submit, #loginButton{
+  width: 230px;
+  height: auto;
+  margin-top: 25px;
+}
+
+.columnlayout{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cart{
+  width: 30px;
+  height: auto;
+}
+
+#checkOutbtn {
+  bottom: 0px;
+  right: 10px;
+  width: 100px;
+}
+
+#purchase{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+#form__message--error{
+  color:red;
+}

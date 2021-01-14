@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Log in</title>
+<!-- stylesheet -->
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <!-- <script src="signin.js"></script> -->
+  </head>
+  <body>
+    <script src="signin.js"></script>
+    <nav>
+    <ul class="nav-bar">
+      <li class="nav"><a href="index.html">Home </a></li>
+      <li class="nav"><a href="shopping.html"><img src="cartImg.png" alt="shopping cart" id="cart"></a></li>
+    </ul>
+    </nav>
+
+<div>
+  <h3> Sign into your existing account: </h3>
+<form class="login" id="signIn" >
+  <!-- onsubmit="return signIn()" -->
+  <label for="username">Username</label>
+  <input id="username" type="text" placeholder="Username" name="user" required>
+</div></br>
+
+<div>
+  <label for="password">Password</label>
+  <input id="password" type="text" placeholder="Password" name="pass" required>
+  
+  <center><button type="submit" id="loginButton" > Submit </button><center>
+    <!-- onsubmit="signIn();" -->
+</div>
+<div class="form__message" id="form__message--error"></div>
+</form>
+
+
+
+
+<script src="./signin.js"></script>
+</body>
+</html>
