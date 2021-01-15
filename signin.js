@@ -34,7 +34,7 @@ function signIn(e){
     //***data[prop]['role'] to get role type
     // console.log("second then "+data);
     // Object.keys(data).forEach((prop)=> console.log('KEY: '+prop+' VALUE:'+data[prop]));
-  sessionStorage.setItem("token", data["token"]);
+    sessionStorage.setItem("token", data["token"]);
     // token = data["token"];
 
     console.log(typeof data["token"]+" token: "+data["token"]);

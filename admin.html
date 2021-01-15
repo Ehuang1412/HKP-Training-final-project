@@ -9,18 +9,49 @@
   </head>
   <body>
     <script src="new.js"></script>
-    <script src="testingbackend.js"></script>
+    <script src="admin.js"></script>
 
-  <nav>
-    <ul class="nav-bar">
-      <li class="nav"><a href="index.html">Home </a></li>
-      <li class="nav">Welcome Admin</li>
-      <li class="nav"><a href="shopping.html"><img src="cartImg.png" alt="shopping cart" id="cart"></a></li>
-    </ul>
-  </nav>
-<h1>Welcome Admin!</h1>
+    <nav>
+      <ul class="nav-bar">
+        <li class="nav"><a href="index.html">Home </a></li>
+        <li class="nav">Welcome Admin</li>
+        <div class="rowlayout">
+        <li class="nav"><a href="shopping.html"><img src="cartImg.png" alt="shopping cart" id="cart" class="floatright"></a></li>
+        <li><input onclick="revealform()" type="image" src="uploadIcon.png" id="uploadIcon" /></li>
+        <div>
+      </ul>
+    </nav>
+
+    <h1>Welcome Admin!</h1>
+    <div class="cen">
+      <form id="hiddenform">
+        <div>
+          <label for="pic">Item image</label>
+          <input type="file" name="itemimage" id="itemImg" required>
+        </div></br>
+
+        <div>
+          <label for="price">Item price</label>
+          <input type="number" name="price" id="itemprice" required>
+        </div></br>
+
+        <div>
+          <label for="detail">Item detail</label>
+          <textarea id="itemdetail" placeholder="Descriptions for your item..." name="itemdetail" rows="5" cols="30"></textarea>
+        </div></br>
+
+        <button type="submit"> Submit </button>
+
+      </form>
+
+    </div>
+
+    <h2 class="section-header">Store</h2>
+      <div class="shop-items">
+
+      </div>
 
   
-</div>
+    </div>
   </body>
 </html>

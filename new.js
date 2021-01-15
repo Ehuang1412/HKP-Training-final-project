@@ -37,4 +37,4 @@ function submitUserAcc(e){
 //     "email":String(newEmail)
 window.onload=function(){
   document.getElementById("submitNewUser").addEventListener("click", submitUserAcc);
-}
+}       

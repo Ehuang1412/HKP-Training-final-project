@@ -73,11 +73,13 @@ function addToCartClicked(event){
   updateCartTotal();
 }
 
+// Adding item to cart means creating a row for the item and listening to whenever the row will be removed
 function addItemToCart(title,price,imageSrc){
   console.log("addItemToCart arguments:"+ typeof title+" "+typeof price)
   let cartRow = document.createElement('div');
   cartRow.classList.add('cart-row');
   let cartItems = document.getElementsByClassName('cart-items')[0];
+
   let cartItemNames = document.getElementsByClassName('cart-item-title');
   for(let i=0; i<cartItemNames.length; i++){
     if(cartItemNames[i].innerText == title){
@@ -136,13 +138,21 @@ fetch('https://install-gentoo.herokuapp.com/items',{
     'authorization':"Bearer " + token,
 
   }
-  // ,
-  // body: JSON.stringify({
-  //   item: 'item1'
-  // })
 }).then(res => {
+  console.log("first then")
   return res.json()
-}).then(data =>console.log(data))
+}).then(data =>{
+  console.log("second then")
+  console.log(data);
+  
+  for(let i=0; i<data.items.length; ++i){
+
+    displayShopItem(data.items[i].itemname, data.items[i].description, data.items[i].picture, data.items[i].price);
+    
+
+  }
+  console.log("length:"+data.items.length)
+  })
 .catch(error=>console.log('Error'))
 
 //for loop{
@@ -175,3 +185,26 @@ itemDetails.appendChild(itemPrice);
 itemDetails.appendChild(itemAddButton)
 
 //}
+
+// Displaying shop items means creating a box for an item and listening for whenever it will be added to cart 
+function displayShopItem(title,details,img,price){
+  let shopItemBox = document.createElement('div');
+  shopItemBox.classList.add('shop-item');
+  
+  let shopItem = `
+    <span class="shop-item-title">${title}</span>
+    <img class="shop-item-image" src="${img}">
+    <div class="shop-item-details">
+        <div class="shop-item-description>${details}</div>
+        <span class="shop-item-price">${price}</span>
+        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+    </div>
+  `
+  let shopItems = document.getElementsByClassName('shop-items')[0];
+  shopItemBox.innerHTML = shopItem;
+  shopItems.append(shopItemBox);
+
+  shopItemBox.getElementsByClassName('shop-item-button')[0].addEventListener('click',addItemToCart);
+  
+}
+
