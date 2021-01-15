@@ -46,7 +46,7 @@ button:hover{
   color: white;
 }
 
-#submit, #loginButton{
+#submitNewUser, #loginButton{
   width: 230px;
   height: auto;
   margin-top: 25px;

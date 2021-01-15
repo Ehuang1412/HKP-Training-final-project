@@ -1,11 +1,16 @@
 if(document.readyState == 'loading'){
   document.addEventListener('DOMContentLoaded', ready);
 }else{
+  var token = sessionStorage.getItem('token');
+  console.log("TOKEN: "+token);
   ready();
 }
 
+
+
 // Event listeners for elements already loaded into document
 function ready(){
+  
   let removeCartItemButtons = document.getElementsByClassName("btn-danger");
   console.log(removeCartItemButtons)
   for(let i=0; i<removeCartItemButtons.length; i++){
@@ -27,6 +32,8 @@ function ready(){
   }
 
   document.getElementById('checkOutbtn').addEventListener('click',purchaseClicked);
+
+  
 
 }
 
@@ -121,19 +128,22 @@ function updateCartTotal(){
   total = Math.round(total*100)/100;
   document.getElementsByClassName('cart-total-price')[0].innerText = '$'+total
 }
-// const url = 'https://install-gentoo.herokuapp.com/users/signup';
-// fetch(url,{
-//   method: 'POST',
-//   headers:{
-//     'Content-Type':'application/json'
-//   },
-//   body: JSON.stringify({
-//     item: 'item1'
-//   })
-// }).then(res => {
-//   return res.json()
-// }).then(data =>console.log(data))
-// .catch(error=>console.log('Error'))
+
+fetch('https://install-gentoo.herokuapp.com/items',{
+  method: 'GET',
+  headers:{
+    'Content-Type':'application/json',
+    'authorization':"Bearer " + token,
+
+  }
+  // ,
+  // body: JSON.stringify({
+  //   item: 'item1'
+  // })
+}).then(res => {
+  return res.json()
+}).then(data =>console.log(data))
+.catch(error=>console.log('Error'))
 
 //for loop{
 let itemBox = document.createElement("div");
@@ -143,7 +153,6 @@ let itemBox = document.createElement("div");
     let itemPrice = document.createElement("span");
     let itemAddButton = document.createElement("button");
 
-// itemBox.innerText="";
   itemTitle.innerText = "shop-item-title"
   itemImg.innerText = "shop-item-image"
   itemDetails.innerText = "shop-item-details"

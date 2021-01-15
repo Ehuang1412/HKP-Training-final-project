@@ -1,4 +1,5 @@
 role="";
+// let token="tojen";
 function signIn(e){
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
@@ -33,6 +34,11 @@ function signIn(e){
     //***data[prop]['role'] to get role type
     // console.log("second then "+data);
     // Object.keys(data).forEach((prop)=> console.log('KEY: '+prop+' VALUE:'+data[prop]));
+  sessionStorage.setItem("token", data["token"]);
+    // token = data["token"];
+
+    console.log(typeof data["token"]+" token: "+data["token"]);
+  //  sleep(10000);
     let loginButton = document.getElementById("loginButton");
     if(data['user']['role'] == 'admin'){
       // loginButton.setAttribute("onclick","document.location='admin.html'");
@@ -44,30 +50,15 @@ function signIn(e){
   })
   .catch(error=>{
     console.log('Error:'+error);
-    console.log('role: '+role);
-    Object.keys(role).forEach((prop)=> console.log('key: '+prop));
+    // console.log('role: '+role);
+    // Object.keys(role).forEach((prop)=> console.log('key: '+prop));
   
   })
 
 
 
 
-  // fetch(url,{
-  // method: 'POST',
-  // headers:{
-  //   'Content-Type':'application/json'
-  // },
-  // body: JSON.stringify({
-  //   "username":newUser,
-  //   "password":newPW,
-  //   "email":newEmail
-  // })
-  // }).then(res => {
-  //   console.log("res:"+res.value)
-  //   return res.json()
-  // }).then(data =>console.log(data))
-  // .catch(error=>console.log('Error!'));
-
+  
   // for(let i=0; i<sampleLogins.length; i++){
   //   if(username == sampleLogins[i].username && password == sampleLogins[i].password){
   //     console.log(username + "logged in!!!")
