@@ -1,3 +1,4 @@
+role="";
 function signIn(e){
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
@@ -15,14 +16,57 @@ function signIn(e){
   }).then(res=>{
     if(res.ok){
       setFormMessage( "success", "You are now logged in")
-      console.log('SUCCESS')
+      console.log('SUCCESS ');
+      // role = JSON.parse(res.json());
+      // role = JSON.stringify(res.json())
+      // console.log('res.json() role:'+res.json());
+      // Object.keys(res.json()).forEach((prop)=> console.log('key: '+prop));
+  
+      return res.json()
     } else{
       setFormMessage( "error", "Invalid username/password combination");
       console.log("NOT SUCEES")
     }
   })
-  .then(data=>console.log(data))
-  .catch(error=>console.log('Error'))
+  .then(data=>{
+    // data is now parsed JSON
+    //***data[prop]['role'] to get role type
+    // console.log("second then "+data);
+    // Object.keys(data).forEach((prop)=> console.log('KEY: '+prop+' VALUE:'+data[prop]));
+    let loginButton = document.getElementById("loginButton");
+    if(data['user']['role'] == 'admin'){
+      // loginButton.setAttribute("onclick","document.location='admin.html'");
+      window.location.href = 'admin.html';
+    }else{
+      //  loginButton.setAttribute("onclick","document.location='shopping.html'");
+      window.location.href = 'shopping.html';
+    }
+  })
+  .catch(error=>{
+    console.log('Error:'+error);
+    console.log('role: '+role);
+    Object.keys(role).forEach((prop)=> console.log('key: '+prop));
+  
+  })
+
+
+
+
+  // fetch(url,{
+  // method: 'POST',
+  // headers:{
+  //   'Content-Type':'application/json'
+  // },
+  // body: JSON.stringify({
+  //   "username":newUser,
+  //   "password":newPW,
+  //   "email":newEmail
+  // })
+  // }).then(res => {
+  //   console.log("res:"+res.value)
+  //   return res.json()
+  // }).then(data =>console.log(data))
+  // .catch(error=>console.log('Error!'));
 
   // for(let i=0; i<sampleLogins.length; i++){
   //   if(username == sampleLogins[i].username && password == sampleLogins[i].password){
