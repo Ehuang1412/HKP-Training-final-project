@@ -47,7 +47,11 @@ function displayShopItem(title,details,img,price){
     <div class="shop-item-details">
         <div class="shop-item-description>${details}</div>
         <span class="shop-item-price">${price}</span>
+<<<<<<< HEAD
         <button class="btn btn-primary shop-item-button" type="button">REMOVE</button>
+=======
+        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+>>>>>>> d37cd4b80efae18815a9e635b68908fcf08dd183
     </div>
   `
   let shopItems = document.getElementsByClassName('shop-items')[0];

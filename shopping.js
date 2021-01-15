@@ -63,12 +63,14 @@ function quantityChanged(event){
 }
 
 function addToCartClicked(event){
+  console.log('--addToCartClicked--')
   let button = event.target;
   let shopItem = button.parentElement.parentElement;
+  console.log('shopItem attribute class:'+shopItem.classList)
   let title = shopItem.getElementsByClassName('shop-item-title')[0].innerText;
   let price = shopItem.getElementsByClassName('shop-item-price')[0].innerText;
   let imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src;
-  console.log(title,price,imageSrc);
+  console.log('\ntitle: ',title,'price: ',price,imageSrc);
   addItemToCart(title,price,imageSrc);
   updateCartTotal();
 }
@@ -83,7 +85,7 @@ function addItemToCart(title,price,imageSrc){
   let cartItemNames = document.getElementsByClassName('cart-item-title');
   for(let i=0; i<cartItemNames.length; i++){
     if(cartItemNames[i].innerText == title){
-      alert('This item is already added to the cart')
+      alert(title +' is already added to the cart')
       return
     }
   }
@@ -156,37 +158,40 @@ fetch('https://install-gentoo.herokuapp.com/items',{
 .catch(error=>console.log('Error'))
 
 //for loop{
-let itemBox = document.createElement("div");
-  let itemTitle = document.createElement("span");
-  let itemImg = document.createElement("img");
-  let itemDetails = document.createElement("div");
-    let itemPrice = document.createElement("span");
-    let itemAddButton = document.createElement("button");
+// let itemBox = document.createElement("div");
+//   let itemTitle = document.createElement("span");
+//   let itemImg = document.createElement("img");
+//   let itemDetails = document.createElement("div");
+//     let itemPrice = document.createElement("span");
+//     let itemAddButton = document.createElement("button");
 
-  itemTitle.innerText = "shop-item-title"
-  itemImg.innerText = "shop-item-image"
-  itemDetails.innerText = "shop-item-details"
-    itemPrice.innerText = "shop-item-price"
-    itemAddButton.innerText = "ADD TO CART"
+//   itemTitle.innerText = "shop-item-title"
+//   itemImg.innerText = "shop-item-image"
+//   itemDetails.innerText = "shop-item-details"
+//     itemPrice.innerText = "shop-item-price"
+//     itemAddButton.innerText = "ADD TO CART"
 
-itemBox.setAttribute("class","shop-item");
-  itemTitle.setAttribute("class","shop-item-title");
-  itemImg.setAttribute("class", "shop-item-image");
-  itemDetails.setAttribute("class","shop-item-details");
-    itemPrice.setAttribute("class","shop-item-price");
-    itemAddButton.setAttribute("class","btn btn-primary shop-item-button");
+// itemBox.setAttribute("class","shop-item");
+//   itemTitle.setAttribute("class","shop-item-title");
+//   itemImg.setAttribute("class", "shop-item-image");
+//   itemDetails.setAttribute("class","shop-item-details");
+//     itemPrice.setAttribute("class","shop-item-price");
+//     itemAddButton.setAttribute("class","btn btn-primary shop-item-button");
 
-const storeItems = document.querySelector(".shop-items");
-storeItems.appendChild(itemBox);
-itemBox.appendChild(itemTitle);
-itemBox.appendChild(itemImg);
-itemBox.appendChild(itemDetails);
-itemDetails.appendChild(itemPrice);
-itemDetails.appendChild(itemAddButton)
+// const storeItems = document.querySelector(".shop-items");
+// storeItems.appendChild(itemBox);
+// itemBox.appendChild(itemTitle);
+// itemBox.appendChild(itemImg);
+// itemBox.appendChild(itemDetails);
+// itemDetails.appendChild(itemPrice);
+// itemDetails.appendChild(itemAddButton)
 
 //}
 
+// <<<<<<< HEAD
 // Displaying shop items means creating a box for an item and listening for whenever it will be added to cart 
+// =======
+// >>>>>>> d37cd4b80efae18815a9e635b68908fcf08dd183
 function displayShopItem(title,details,img,price){
   let shopItemBox = document.createElement('div');
   shopItemBox.classList.add('shop-item');
@@ -195,16 +200,20 @@ function displayShopItem(title,details,img,price){
     <span class="shop-item-title">${title}</span>
     <img class="shop-item-image" src="${img}">
     <div class="shop-item-details">
-        <div class="shop-item-description>${details}</div>
-        <span class="shop-item-price">${price}</span>
-        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+      <div class="shop-item-description">${details}</div>
+      <span class="shop-item-price">${price}</span>
+      <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
     </div>
   `
-  let shopItems = document.getElementsByClassName('shop-items')[0];
+   let shopItems = document.getElementsByClassName('shop-items')[0];
   shopItemBox.innerHTML = shopItem;
   shopItems.append(shopItemBox);
+// <<<<<<< HEAD
 
-  shopItemBox.getElementsByClassName('shop-item-button')[0].addEventListener('click',addItemToCart);
+  shopItemBox.getElementsByClassName('shop-item-button')[0].addEventListener('click',addToCartClicked);
+  console.log('--Done displaying item--')
   
+// =======
+// >>>>>>> d37cd4b80efae18815a9e635b68908fcf08dd183
 }
 
