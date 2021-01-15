@@ -28,7 +28,10 @@ nav{
   text-transform: uppercase;
   font-family: "Arial";
   font-weight: 600;
-  
+}
+
+.nav{
+  color: white;
 }
 
 button{
@@ -88,4 +91,26 @@ button:hover{
 .cen{
   display: flex;
   justify-content: center;
+}
+
+#uploadIcon{
+  width: 20px;
+  height: auto;
+  margin: 6px;
+}
+
+#hiddenform{
+  display: none;
+  background: #a771f3;
+  width: 50%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 10px 15px;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.rowlayout{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
