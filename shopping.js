@@ -188,10 +188,8 @@ fetch('https://install-gentoo.herokuapp.com/items',{
 
 //}
 
-// <<<<<<< HEAD
+
 // Displaying shop items means creating a box for an item and listening for whenever it will be added to cart 
-// =======
-// >>>>>>> d37cd4b80efae18815a9e635b68908fcf08dd183
 function displayShopItem(title,details,img,price){
   let shopItemBox = document.createElement('div');
   shopItemBox.classList.add('shop-item');
@@ -208,12 +206,11 @@ function displayShopItem(title,details,img,price){
    let shopItems = document.getElementsByClassName('shop-items')[0];
   shopItemBox.innerHTML = shopItem;
   shopItems.append(shopItemBox);
-// <<<<<<< HEAD
+
 
   shopItemBox.getElementsByClassName('shop-item-button')[0].addEventListener('click',addToCartClicked);
   console.log('--Done displaying item--')
   
-// =======
-// >>>>>>> d37cd4b80efae18815a9e635b68908fcf08dd183
+
 }
 
