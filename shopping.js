@@ -76,7 +76,7 @@ function addToCartClicked(event){
 }
 
 // Adding item to cart means creating a row for the item and listening to whenever the row will be removed
-function addItemToCart(title,price,imageSrc){
+function addItemToCart(title,price,imageSrc,quantity=1){
   console.log("addItemToCart arguments:"+ typeof title+" "+typeof price)
   let cartRow = document.createElement('div');
   cartRow.classList.add('cart-row');
@@ -97,7 +97,7 @@ function addItemToCart(title,price,imageSrc){
     </div>
     <span class="cart-price cart-column">${price}</span>
     <div class="cart-quantity cart-column">
-        <input class="cart-quantity-input" type="number" value="1">
+        <input class="cart-quantity-input" type="number" value="${quantity}">
         <button class="btn btn-danger" type="button">REMOVE</button>
     </div>
   `
@@ -161,6 +161,74 @@ fetch('https://install-gentoo.herokuapp.com/items',{
   console.log("length:"+data.items.length)
   })
 .catch(error=>console.log('Error'))
+
+fetch('https://install-gentoo.herokuapp.com/users/cart-items',{
+  method: 'GET',
+  headers:{
+    'Content-Type':'application/json',
+    'authorization':"Bearer " + token,
+
+  }
+}).then(res => {
+  console.log("first then")
+  return res.json()
+}).then(data =>{
+  console.log("second then")
+  console.log(data);
+  
+  for(let i=0; i<data.cart.length; ++i){
+      let shopItemNames = document.getElementsByClassName('shop-item-title');
+
+      for(let i=0; i<shopItemNames.length; i++){
+        if(shopItemNames[i].innerText == title){
+          let imgsrc = shopItemNames[i].parentElement.getElementsByClassName('shop-item-image')[0].getAttribute('src');
+          addItemToCart(data.cart.itemname, data.cart.price,imgsrc, data.cart.quantity)
+          return
+        }
+      }
+  }
+  console.log("length:"+data.items.length)
+  })
+.catch(error=>console.log('Error'))
+
+// "cart":{
+//           {
+//               _id: $ITEMID,
+//               itemname: $ITEMNAME:STRING, 
+//               price: $PRICE:STRING(represent a NUMBER),
+//               quantity: $QUANTITY:STRING(represent a NUMBER),
+//               },
+//           {
+//               _id: $ITEMID,
+//               itemname: $ITEMNAME:STRING, 
+//               price: $PRICE:STRING(represent a NUMBER),
+//               quantity: $QUANTITY:STRING(represent a NUMBER),
+
+
+fetch('https://install-gentoo.herokuapp.com/users/cart-items/checkout',{
+  method: 'GET',
+  headers:{
+    'Content-Type':'application/json',
+    'authorization':"Bearer " + token,
+
+  }
+}).then(res => {
+  console.log("first then")
+  return res.json()
+}).then(data =>{
+  console.log("second then")
+  console.log(data);
+  
+  for(let i=0; i<data.cart.length; ++i){
+      let shopItemNames = document.getElementsByClassName('shop-item-title');
+
+     
+  }
+  console.log("length:"+data.items.length)
+  })
+.catch(error=>console.log('Error'))
+
+          
 
 //for loop{
 // let itemBox = document.createElement("div");
