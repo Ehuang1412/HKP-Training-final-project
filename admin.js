@@ -58,3 +58,4 @@ function displayShopItem(title,details,img,price){
   shopItemBox.innerHTML = shopItem;
   shopItems.append(shopItemBox);
 }
+

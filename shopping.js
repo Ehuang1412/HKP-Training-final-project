@@ -106,6 +106,7 @@ function addItemToCart(title,price,imageSrc){
   // Hook up all event listeners to the new elements added to the document since it was add after ready()
   cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click',removeCartItem);
   cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change',quantityChanged);
+  
 }
 
 
@@ -128,9 +129,13 @@ function updateCartTotal(){
     console.log('  quantity: '+quantity)
     total = total + (price*quantity);
     console.log('total: '+total);
+      //Add to backend
+    let title = cartRow.getElementsByClassName('cart-item-title')[0].innerText;
+    saveCartItem(title,quantity);
   }
   total = Math.round(total*100)/100;
-  document.getElementsByClassName('cart-total-price')[0].innerText = '$'+total
+  document.getElementsByClassName('cart-total-price')[0].innerText = '$'+total;
+
 }
 
 fetch('https://install-gentoo.herokuapp.com/items',{
@@ -212,5 +217,40 @@ function displayShopItem(title,details,img,price){
   console.log('--Done displaying item--')
   
 
+}
+
+function saveCartItem(title,quant){
+  // num = parseInt(quant);
+  fetch('https://install-gentoo.herokuapp.com/users/cart-items',{
+  method: 'POST',
+  headers:{
+    'Content-Type':'application/json',
+    'authorization':"Bearer " + token,
+  },
+  body: JSON.stringify({
+    "itemname": title,
+    "quantity": parseInt(quant),
+  })
+}).then(res => {
+    if(res.ok){
+      
+      console.log('SUCCESS ');
+      // role = JSON.parse(res.json());
+      // role = JSON.stringify(res.json())
+      // console.log('res.json() role:'+res.json());
+      // Object.keys(res.json()).forEach((prop)=> console.log('key: '+prop));
+  
+      return res.json()
+    } else{
+     console.log(typeof title, typeof parseInt(quant))
+      console.log("NOT SUCEES")
+    }
+  }).then(data => {
+  console.log('Success:', data);
+  Object.keys(data).forEach((prop)=> console.log('KEY: '+prop+' VALUE:'+data[prop]));
+})
+.catch((error) => {
+  console.log('Error:');
+});
 }
 
