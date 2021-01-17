@@ -23,31 +23,65 @@
     </nav>
 
     <h1>Welcome Admin!</h1>
-    <div class="cen">
-      <form id="hiddenform">
-        <div>
+    <div style="display: flex; justify-content: center;">
+    <div id="uploadform">
+  <!--
+     <form method="post" action="shopping.html"> -->
+       <!--<div>
           <label for="itemImg">Item image</label>
           <input type="file" name="itemimage" id="itemImg" accept="image/*" required>
           
+        </div></br> -->
+        <div>
+          <label for="itemname">Item name</label>
+          <input type="text" name="itemname" id="itemname" required>
         </div></br>
-
+        
         <div>
           <label for="price">Item price</label>
           <input type="number" name="price" id="itemprice" required>
         </div></br>
-
+<!--
         <div>
           <label for="detail">Item detail</label>
-          <textarea id="itemdetail" placeholder="Descriptions for your item..." name="itemdetail" rows="5" cols="30"></textarea>
+          <textarea name="detail" id="itemdetail">
+          </textarea>
         </div></br>
 
-        <button type="submit"> Submit </button>
+        <div>
+          <label for="itemimg">Item image</label>
+          <input type="file" name="itemimage" id="itemImg" accept="image/*">
+        </div></br>
 
-      </form>
+        -->
+<!--
+        <div>
+          <form>
+            <input type="file" id="image" name="submission">
+        </div>
+-->
+        <!--<div>
+          <label for="detail">Item detail</label>
+          <textarea id="itemdetail" placeholder="Descriptions for your item..." name="itemdetail" rows="5" cols="30"></textarea>
+        </div></br> -->
+
+        <button onclick="displayFormData()"> Submit </button>
+        
+
+      <!--</form>-->
 
     </div>
-
+    </div>
+      
     <h2 class="section-header">Store</h2>
+
+    <span id="spanResult"></span>
+    <!--<p id="data"></p>
+    <p id="itemprice"></p>
+    <p id="itemname"></p>
+    <p id="itemdetail"></p>-->
+    
+    
       <div class="shop-items">
 
       </div>

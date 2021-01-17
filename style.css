@@ -99,14 +99,14 @@ button:hover{
   margin: 6px;
 }
 
-#hiddenform{
+#uploadform{
   display: none;
   background: #a771f3;
   width: 50%;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   padding: 10px 15px;
   border-radius: 10px;
-  z-index: 1;
+  text-align: center;
 }
 
 .rowlayout{

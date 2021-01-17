@@ -191,42 +191,28 @@ fetch('https://install-gentoo.herokuapp.com/users/cart-items',{
   })
 .catch(error=>console.log('Error'))
 
-// "cart":{
-//           {
-//               _id: $ITEMID,
-//               itemname: $ITEMNAME:STRING, 
-//               price: $PRICE:STRING(represent a NUMBER),
-//               quantity: $QUANTITY:STRING(represent a NUMBER),
-//               },
-//           {
-//               _id: $ITEMID,
-//               itemname: $ITEMNAME:STRING, 
-//               price: $PRICE:STRING(represent a NUMBER),
-//               quantity: $QUANTITY:STRING(represent a NUMBER),
+// fetch('https://install-gentoo.herokuapp.com/users/cart-items/checkout',{
+//   method: 'GET',
+//   headers:{
+//     'Content-Type':'application/json',
+//     'authorization':"Bearer " + token,
 
-
-fetch('https://install-gentoo.herokuapp.com/users/cart-items/checkout',{
-  method: 'GET',
-  headers:{
-    'Content-Type':'application/json',
-    'authorization':"Bearer " + token,
-
-  }
-}).then(res => {
-  console.log("first then")
-  return res.json()
-}).then(data =>{
-  console.log("second then")
-  console.log(data);
+//   }
+// }).then(res => {
+//   console.log("first then")
+//   return res.json()
+// }).then(data =>{
+//   console.log("second then")
+//   console.log(data);
   
-  for(let i=0; i<data.cart.length; ++i){
-      let shopItemNames = document.getElementsByClassName('shop-item-title');
+//   for(let i=0; i<data.cart.length; ++i){
+//       let shopItemNames = document.getElementsByClassName('shop-item-title');
 
      
-  }
-  console.log("length:"+data.items.length)
-  })
-.catch(error=>console.log('Error'))
+//   }
+//   console.log("length:"+data.items.length)
+//   })
+// .catch(error=>console.log('Error'))
 
           
 
