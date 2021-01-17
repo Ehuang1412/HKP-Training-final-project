@@ -8,8 +8,11 @@ window.onload=function(){
   document.getElementById("upload-item").addEventListener("click", uploadItem);
 }
 
+<<<<<<< HEAD
 let idMap = new Map();
 
+=======
+>>>>>>> 8eb6eca8b09e98e9ec8c80395d3ba4f7e9066ddb
 // Event listeners for elements already loaded into document
 function ready(){
   fetch('https://install-gentoo.herokuapp.com/items',{
@@ -33,8 +36,14 @@ function ready(){
     }
     console.log("length:"+data.items.length)
     })
+<<<<<<< HEAD
   .catch(error=>console.log('Error:',error))
 
+=======
+  .catch(error=>console.log('Error'))
+
+  
+>>>>>>> 8eb6eca8b09e98e9ec8c80395d3ba4f7e9066ddb
 }
 
 function revealform(){
@@ -69,14 +78,17 @@ function displayShopItem(title,details,img,price){
     <img class="shop-item-image" src="${img}">
     <div class="shop-item-details">
         <div class="shop-item-description>${details}</div>
-        <span class="shop-item-price">${price}</span>
-       
+        <span class="shop-item-price">${price}</span>      
         <button class="btn btn-primary remove-item-button" type="button">REMOVE</button>
 
 
     </div>
   `
   //>> admin usage (either delete or keep item)
+
+
+
+  
   let shopItems = document.getElementsByClassName('shop-items')[0];
   shopItemBox.innerHTML = shopItem;
   shopItems.append(shopItemBox);
@@ -137,6 +149,7 @@ function uploadItem(e){
 // })
 // .catch(error => {
 //   console.error('Error:', error);
+
 // });
 
 function removeItem(event){
@@ -164,3 +177,4 @@ function removeItem(event){
     console.error('Error:', error);
   });
 }
+
